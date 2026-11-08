@@ -14,7 +14,7 @@ directly on a given computer.
 1. Build a Docker image that contains :
 
 ```shell
-docker build -t mardi-oif-optim-repro . --platform=linux/amd64
+docker build -t mardi-oif-optim-repro .
 ```
 which will use the `Dockerfile` in this repro to build [MaRDI Open
 Interfaces](https://github.com/MaRDI4NFDI/open-interfaces)
