@@ -30,7 +30,7 @@ docker run -it --rm -v"$(PWD)":"/app" mardi-oif-optim-repro
 
 3. Run experiments that train neural networks using MaRDI Open Interfaces::
 ```shell
-cd exp/07-07-2026-06-02-vbe-bfgs-many-trials/
+cd exp/07-2026-06-02-vbe-bfgs-many-trials/
 # Optionally, do smoke testing with the following commands
 # python ../../bin/train_viscous_burgers_pinn.py --outdir=_tmpdir --impl scipy_optimize --opt BFGS --gtol 1e-1 --split-key --seed 1
 # python ../../bin/train_viscous_burgers_pinn.py --outdir=_tmpdir --impl optim_jl --opt BFGS --gtol 1e-1 --split-key --seed 1 --linesearch StrongWolfe
