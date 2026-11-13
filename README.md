@@ -54,6 +54,19 @@ After completion, to generate statistics:
 python table_statistics.py | python transform-latex-table.py
 ```
 
+## Additional notes
+
+To start on a Macbook with 8 performance cores
+forcing to prevent sleeping of disk, display and forcing high priority:
+```shell
+caffeinate -dimsu sudo nice -n -15 \
+    docker run -it --rm -v"$(PWD)":"/app" \
+         --cpus="8" \
+        -e OMP_NUM_THREADS=8 \
+        -e OPENBLAS_NUM_THREADS=8 \
+        mardi-oif-optim-repro
+```
+
 ## Copyright
 
 2026 © Dmitry I. Kabanov, Stephan Rave, Mario Ohlberger
