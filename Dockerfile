@@ -16,7 +16,7 @@ RUN apt update && apt install -y \
 # Set up Python (version 3.12).
 RUN python3 -m venv venv && \
     . venv/bin/activate && \
-    python3 -m pip install numpy==2.2 scipy==1.15 msgpack==1.2 jax matplotlib
+    python3 -m pip install numpy==2.2 scipy==1.15 msgpack==1.2 jax matplotlib pandas jinja2
 
 # Set up Julia for the target platform.
 ARG TARGETARCH
