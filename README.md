@@ -30,10 +30,10 @@ docker run -it --rm -v"$(PWD)":"/app" mardi-oif-optim-repro
 
 3. Run experiments that train neural networks using MaRDI Open Interfaces::
 ```shell
-cd exp/07-2026-06-02-vbe-bfgs-many-trials/
+cd exp/15-2026-11-15-vbe-all-together/
 # Optionally, do smoke testing with the following commands
-# python ../../bin/train_viscous_burgers_pinn.py --outdir=_tmpdir --impl scipy_optimize --opt BFGS --gtol 1e-1 --split-key --seed 1
-# python ../../bin/train_viscous_burgers_pinn.py --outdir=_tmpdir --impl optim_jl --opt BFGS --gtol 1e-1 --split-key --seed 1 --linesearch StrongWolfe
+# python ../../bin/train_viscous_burgers_pinn.py --outdir=_tmpdir --impl scipy_optimize --opt BFGS --gtol 1e-1 --split-key --seed 1 --jit --warmup
+# python ../../bin/train_viscous_burgers_pinn.py --outdir=_tmpdir --impl optim_jl --opt BFGS --gtol 1e-1 --split-key --seed 1 --linesearch StrongWolfe --jit --warmup
 bash run.sh
 ```
 
@@ -42,19 +42,14 @@ To generate statistics, do
 python table_statistics.py | python transform-latex-table.py
 ```
 
-4. Run an experiment that trains neural networks using SciPy directly, without
-_Open Interfaces_:
-```shell
-cd  exp/09-2026-11-08-vbe-bfgs-many-trials-raw/
-bash run.sh
-```
+## Additional notes 1
 
-After completion, to generate statistics:
-```shell
-python table_statistics.py | python transform-latex-table.py
-```
+We used the script `runall_linux_workstation.sh` that checks that Turbo Boost
+(Intel technology for variable CPU frequency) is disabled.
+Additionally, we run the code using `nice -n -15` (high-priority).
+We used a workstation equipped with an 8-core Intel Intel Xeon E5-1630 v3 CPU (3.70~GHz).
 
-## Additional notes
+## Additional notes 2
 
 To start on a Macbook with 8 performance cores
 forcing to prevent sleeping of disk, display and forcing high priority:
